@@ -341,44 +341,11 @@
 
     <!-- Section 2: Product Listings -->
     <div class="col-12 col-lg-9">
-      <div class="row">
-        <!-- Product Card 1 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
-            <div class="card-body">
-              <h5 class="card-title">Product Title 1</h5>
-              <p class="card-text">Short description of the product.</p>
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-          </div>
-        </div>
-        <!-- Product Card 2 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
-            <div class="card-body">
-              <h5 class="card-title">Product Title 2</h5>
-              <p class="card-text">Short description of the product.</p>
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-          </div>
-        </div>
-        <!-- Product Card 3 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
-            <div class="card-body">
-              <h5 class="card-title">Product Title 3</h5>
-              <p class="card-text">Short description of the product.</p>
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-          </div>
-        </div>
-        <!-- Additional Product Cards -->
-        <!-- Add more product cards as needed -->
+      <div class="row" id="product-list">
+        <!-- Product cards will be dynamically inserted here -->
       </div>
     </div>
+
   </div>
 </div>
 
@@ -405,8 +372,8 @@
       <a
         href="/addProduct"
         
-        class="btn btn-danger btn-buy-now"
-        style="font-size: 1.0rem; padding: 0.75rem 1.5rem; border-radius: 25px;"
+        class="btn btn-danger btn-buy-now " 
+        style="font-size: 1.0rem;  padding: 0.75rem 1.5rem; border-radius: 25px;"
       >
         Add Products <i class="bi bi-plus-circle ms-2" style="font-size: 1.2rem;"></i>
       </a>
@@ -429,6 +396,86 @@
 
     </script>
     <!-- endbuild -->
+    <script>
+      // Dummy product data array with prices in rupees (₹)
+      const products = [
+        {
+          title: 'Portable Air Conditioner',
+          description: 'Stay cool with this portable AC, ideal for small rooms and apartments.',
+          image: 'https://i.pinimg.com/736x/42/99/b4/4299b4e6d13ec4206fe193a2e39461c1.jpg',
+          link: '#',
+          price:' 299/w', // Price in INR
+          rentalDuration: '1 to 8 w'
+        },
+        {
+          title: 'Ather 450x Scooter',
+          description: 'Experience the future of riding with the Ather 450X! Rent this sleek',
+          image: 'https://i.pinimg.com/736x/04/7d/94/047d949b5c10545b3f4bd97ed33f89a1.jpg',
+          link: '#',
+          price: 499, // Price in INR
+          rentalDuration: '1 Month'
+        }
+       ,
+        {
+          title: 'Invertor',
+          description: 'Rent the latest Invertor with top-tier features for your daily needs.',
+          image: 'https://i.pinimg.com/736x/00/c1/1e/00c11e69b3e68ff8d3146e896c568e3e.jpg',
+          link: '#',
+          price: '199/w', // Price in INR
+          rentalDuration: '1 to 4w'
+        },
+        {
+          title: 'LED Projector',
+          description: 'Perfect for home theaters or presentations. Rent this portable LED projector.',
+          image: 'https://i.pinimg.com/736x/85/8b/4b/858b4bb70cfa9211447d50beb77bc1c1.jpg',
+          link: '#',
+          price: 249, // Price in INR
+          rentalDuration: '2 to 24w'
+        },
+        {
+          title: 'Canon DSLR',
+          description: ' Perfect for photographers and hobbyists alike. Rent now and take your photography to the next level.',
+          image: 'https://i.pinimg.com/736x/60/87/ab/6087ab355f5df291d26ed3dfdd3800c2.jpg',
+          link: '#',
+          price: '500/day', // Price in INR
+          rentalDuration: '1 to 4 Days'
+        },
+        {
+          title: 'Foldable Study Table',
+          description: 'Compact and foldable study table, perfect for home offices and spaces.',
+          image: 'https://i.pinimg.com/736x/15/cd/22/15cd2285288bb1a090f26908c0b78c53.jpg',
+          link: '#',
+          price: '99/w', // Price in INR
+          rentalDuration: '1 to 16 w'
+        }
+       
+        // Add more products as needed
+      ];
+    
+      // Get the container where product cards will be added
+      const productList = document.getElementById('product-list');
+    
+      // Loop through the product array and create HTML for each product
+      products.forEach(product => {
+        const productCard = `
+          <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card">
+              <img src="${product.image}" class="card-img-top" alt="Product Image" style="width:100%; height: 300px; object-fit: cover;">
+
+              <div class="card-body">
+                <h5 class="card-title">${product.title}</h5>
+                <p class="card-text">${product.description}</p>
+                <p><strong>Price:</strong> ₹${product.price.toLocaleString()}</p>
+                <p><strong>Rental Duration:</strong> ${product.rentalDuration}</p>
+                <a href="/item-details" class="btn btn-primary">Rent Now</a>
+              </div>
+            </div>
+          </div>
+        `;
+        // Append the product card to the product list
+        productList.innerHTML += productCard;
+      });
+    </script>
 
     <!-- Vendors JS -->
     <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>

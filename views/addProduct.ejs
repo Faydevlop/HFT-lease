@@ -196,18 +196,88 @@
         <div class="layout-page">
           <!-- Navbar -->
 
+           <!-- form -->
+           <div class="container mt-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Add Rental Product</h5>
+                <form id="rentalProductForm" novalidate enctype="multipart/form-data" method="POST" >
+                  <!-- Product Name -->
+                  <div class="mb-3">
+                    <label for="productName" class="form-label">Product Name <span class="text-danger">*</span></label>
+                    <input type="text" id="productName" class="form-control" placeholder="Enter product name" required>
+                    <small class="text-danger d-none" id="productNameError">Please enter the product name.</small>
+                  </div>
+          
+                  <!-- Category -->
+                  <div class="mb-3">
+                    <label for="productCategory" class="form-label">Category <span class="text-danger">*</span></label>
+                    <select id="productCategory" class="form-select" required>
+                      <option value="" selected disabled>Select category</option>
+                      <option value="furniture">Furniture</option>
+                      <option value="appliances">Appliances</option>
+                      <option value="vehicles">Vehicles</option>
+                      <option value="electronics">Electronics</option>
+                    </select>
+                    <small class="text-danger d-none" id="productCategoryError">Please select a category.</small>
+                  </div>
+          
+                  <!-- Rental Price -->
+                  <div class="mb-3">
+                    <label for="rentalPrice" class="form-label">Rental Price (per day) <span class="text-danger">*</span></label>
+                    <input type="number" id="rentalPrice" class="form-control" placeholder="Enter price per day" required>
+                    <small class="text-danger d-none" id="rentalPriceError">Please enter a valid rental price.</small>
+                  </div>
+          
+                  <!-- Rental Duration -->
+                  <div class="mb-3">
+                    <label for="rentalDuration" class="form-label">Maximum Rental Duration (Days) <span class="text-danger">*</span></label>
+                    <input type="number" id="rentalDuration" class="form-control" placeholder="Enter maximum rental days" required>
+                    <small class="text-danger d-none" id="rentalDurationError">Please enter the maximum rental duration.</small>
+                  </div>
+          
+                  <!-- Description -->
+                  <div class="mb-3">
+                    <label for="productDescription" class="form-label">Description <span class="text-danger">*</span></label>
+                    <textarea id="productDescription" class="form-control" rows="3" placeholder="Enter product description" required></textarea>
+                    <small class="text-danger d-none" id="productDescriptionError">Please provide a description.</small>
+                  </div>
+          
+                  <!-- Image Upload -->
+                  <div class="mb-3">
+                    <label for="productImage" name="productImage" class="form-label">Upload Product Image <span class="text-danger">*</span></label>
+                    <input type="file" id="productImage" class="form-control" name="productImage" accept="image/*" required>
+
+                    <small class="text-danger d-none" id="productImageError">Please upload a product image.</small>
+                  </div>
+          
+                  <!-- Submit Button -->
+                  <button type="submit" id="submitButton" class="btn btn-primary w-100">
+                    Add Product
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+
           
          
 
-            <div class="content-backdrop fade"></div>
+          
           </div>
           <!-- Content wrapper -->
         </div>
         <!-- / Layout page -->
       </div>
 
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+     
+
+      
+
+
+
+
     </div>
     <!-- / Layout wrapper -->
 
@@ -235,6 +305,79 @@
 
     <!-- Main JS -->
     <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.getElementById("rentalProductForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        let isValid = true;
+    
+        const submitButton = document.querySelector("#rentalProductForm button[type='submit']");
+        const originalButtonText = submitButton.textContent; // Save original button text
+    
+        // Reset error messages
+        document.querySelectorAll(".text-danger").forEach(el => el.classList.add("d-none"));
+    
+        // Validate fields
+        const fields = [
+          { id: "productName", errorId: "productNameError", message: "Please enter the product name." },
+          { id: "productCategory", errorId: "productCategoryError", message: "Please select a category." },
+          { id: "rentalPrice", errorId: "rentalPriceError", message: "Please enter a valid rental price." },
+          { id: "rentalDuration", errorId: "rentalDurationError", message: "Please enter the maximum rental duration." },
+          { id: "productDescription", errorId: "productDescriptionError", message: "Please provide a description." },
+          { id: "productImage", errorId: "productImageError", message: "Please upload a product image." }
+        ];
+    
+        fields.forEach(field => {
+          const input = document.getElementById(field.id);
+          if (!input.value || (input.type === "file" && input.files.length === 0)) {
+            document.getElementById(field.errorId).textContent = field.message;
+            document.getElementById(field.errorId).classList.remove("d-none");
+            isValid = false;
+          }
+        });
+    
+        // If valid, proceed with Axios POST request
+        if (isValid) {
+          const formData = new FormData();
+          formData.append("productName", document.getElementById("productName").value);
+          formData.append("productCategory", document.getElementById("productCategory").value);
+          formData.append("rentalPrice", document.getElementById("rentalPrice").value);
+          formData.append("rentalDuration", document.getElementById("rentalDuration").value);
+          formData.append("productDescription", document.getElementById("productDescription").value);
+          formData.append("productImage", document.getElementById("productImage").files[0]);
+    
+          // Disable button and show loading state
+          submitButton.disabled = true;
+          submitButton.textContent = "Loading...";
+    
+          // Axios POST request
+          axios.post('/addProduct', formData, {
+            headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+
+          })
+          .then(response => {
+            // Handle success
+            console.log("Product added successfully:", response.data);
+            alert("Product added successfully!");
+          })
+          .catch(error => {
+            // Handle error
+            console.error("Error adding product:", error);
+            alert("An error occurred while adding the product.");
+          })
+          .finally(() => {
+            // Reset button state
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+          });
+        }
+      });
+    </script>
+    
+    
+    
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
