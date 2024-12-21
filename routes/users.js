@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-let furnitureProducts = require('./data/furniture')
+
 
 // Main Page List
 
@@ -37,6 +37,12 @@ router.get('/category/Appartments',(req,res)=>{
 
 router.get('/category/Bike',(req,res)=>{
   res.render('category/Bike')
+})
+
+// product CRUD operations
+
+router.get('/addProduct',(req,res)=>{
+  res.render('addProduct')
 })
 
 module.exports = router;

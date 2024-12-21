@@ -196,14 +196,6 @@
         <div class="layout-page">
           <!-- Navbar -->
 
-          <div class="container" style="margin-top: 20px;">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="product-list">
-                <!-- Product cards will be inserted here by JavaScript -->
-            </div>
-        </div>
-
-          
-
           
          
 
@@ -219,14 +211,14 @@
     </div>
     <!-- / Layout wrapper -->
 
-    <div class="buy-now">
+    <!-- <div class="buy-now">
       <a
         href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
         target="_blank"
         class="btn btn-danger btn-buy-now"
         >Upgrade to Pro</a
       >
-    </div>
+    </div> -->
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -246,109 +238,6 @@
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
-    <script>
-      const products = [
-  {
-    name: "2BHK Apartment in City Center",
-    description: "A modern 2-bedroom apartment with a spacious living area, modular kitchen, and great city views.",
-    price: "₹20,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/84/2c/ba/842cba0db8a8e1f57e61edaded40091c.jpg",
-    lastUpdated: "2 hours ago",
-    link: "/apartment/city-center-2bhk"
-  },
-  {
-    name: "1BHK Studio Apartment",
-    description: "A cozy 1-bedroom studio apartment, perfect for singles or couples, located near the metro station.",
-    price: "₹12,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/26/08/46/260846db37bc5afc61c4e01caf608c59.jpg",
-    lastUpdated: "1 day ago",
-    link: "/apartment/studio-1bhk"
-  },
-  {
-    name: "3BHK Apartment with Garden",
-    description: "Spacious 3-bedroom apartment with a private garden, ideal for families, located in a serene locality.",
-    price: "₹35,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/92/4a/12/924a1209d6a646f4b90dcc1567d7fc57.jpg",
-    lastUpdated: "3 days ago",
-    link: "/apartment/garden-3bhk"
-  },
-  {
-    name: "Luxury 4BHK Penthouse",
-    description: "An exquisite 4-bedroom penthouse with a rooftop terrace, private pool, and panoramic city views.",
-    price: "₹75,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/60/80/7f/60807f8d7f51580c48ffda9b47b626c5.jpg",
-    lastUpdated: "5 days ago",
-    link: "/apartment/penthouse-4bhk"
-  },
-  {
-    name: "2BHK Apartment near IT Hub",
-    description: "A well-connected 2-bedroom apartment with modern amenities, located close to major IT parks.",
-    price: "₹22,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/25/8c/e0/258ce0bcce18fac835aa863a8ecbf3ca.jpg",
-    lastUpdated: "2 days ago",
-    link: "/apartment/it-hub-2bhk"
-  },
-  {
-    name: "Compact 1RK Apartment",
-    description: "Affordable and compact 1-room kitchen apartment, suitable for bachelors or working professionals.",
-    price: "₹8,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/b4/fa/3c/b4fa3c31919fe82939b848e36c11d34a.jpg",
-    lastUpdated: "1 week ago",
-    link: "/apartment/1rk-compact"
-  },
-  {
-    name: "Furnished 3BHK Apartment",
-    description: "A fully-furnished 3-bedroom apartment with premium interiors and a dedicated parking space.",
-    price: "₹30,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/d6/50/f2/d650f2a45e44c0c02ea9811f9e4d945a.jpg",
-    lastUpdated: "2 hours ago",
-    link: "/apartment/furnished-3bhk"
-  },
-  {
-    name: "1BHK Apartment with Balcony",
-    description: "Bright and airy 1-bedroom apartment with a private balcony and excellent ventilation.",
-    price: "₹15,000/mo",
-    imgSrc: "https://i.pinimg.com/736x/79/98/81/7998813421fec0c453f0a7053da4ba5f.jpg",
-    lastUpdated: "1 day ago",
-    link: "/apartment/balcony-1bhk"
-  }
-];
-
-
-
-// Function to generate product cards dynamically
-function displayProducts(products) {
-    const productList = document.getElementById("product-list");
-    
-    // Clear any existing content
-    productList.innerHTML = '';
-
-    // Loop through the products array and create HTML for each product
-    products.forEach(product => {
-        const productCard = `
-            <div class="col">
-                <div class="card mb-3">
-                   <img class="card-img-top" src="${product.imgSrc}" alt="Card image cap" style="width: 100%; height: 300px; object-fit: cover; object-position: center;" />
-
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text">${product.description}</p>
-                        <p class="card-text"><strong>Price:</strong> ${product.price}</p>
-                        <a href="${product.link}" class="btn btn-primary">See More</a>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        // Append the product card to the product list container
-        productList.innerHTML += productCard;
-    });
-}
-
-// Call the function to display products
-displayProducts(products);
-
-    </script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

@@ -196,111 +196,200 @@
         <div class="layout-page">
           <!-- Navbar -->
           <nav
-          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-          id="layout-navbar"
-        >
-          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-              <i class="bx bx-menu bx-sm"></i>
-            </a>
-          </div>
+  class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+  id="layout-navbar"
+>
+  <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+      <i class="bx bx-menu bx-sm"></i>
+    </a>
+  </div>
 
-          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-            <!-- Search -->
-            <div class="navbar-nav align-items-center">
-              <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input
-                  type="text"
-                  class="form-control border-0 shadow-none"
-                  placeholder="Search..."
-                  aria-label="Search..."
-                />
-              </div>
+  <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+    <!-- Dropdown -->
+    <div class="navbar-nav align-items-center me-3">
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span id="selectedLocation">Location</span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Kochi')">Kochi</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Bangalore')">Bangalore</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Hyderabad')">Hyderabad</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Mumbai')">Mumbai</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Delhi')">Delhi</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Chennai')">Chennai</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Kolkata')">Kolkata</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Pune')">Pune</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Jaipur')">Jaipur</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Ahmedabad')">Ahmedabad</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Chandigarh')">Chandigarh</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Lucknow')">Lucknow</a></li>
+          <li><a class="dropdown-item" href="#" onclick="updateLocation('Indore')">Indore</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- /Dropdown -->
+
+    <!-- Search -->
+    <div class="navbar-nav align-items-center">
+      <div class="nav-item d-flex align-items-center">
+        <i class="bx bx-search fs-4 lh-0"></i>
+        <input
+          type="text"
+          class="form-control border-0 shadow-none"
+          placeholder="Search..."
+          aria-label="Search..."
+        />
+      </div>
+    </div>
+    <!-- /Search -->
+
+   
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <!-- Section 1: Filters/Sorting -->
+    <div class="col-12 col-lg-3 mb-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Filters</h5>
+      
+      <!-- Sort by Price -->
+      <div class="mb-3">
+        <label for="sortPrice" class="form-label">Sort by Price</label>
+        <select id="sortPrice" class="form-select">
+          <option value="low-high">Low to High</option>
+          <option value="high-low">High to Low</option>
+        </select>
+      </div>
+
+      <!-- Sort by Rating -->
+      <div class="mb-3">
+        <label for="sortRating" class="form-label">Sort by Rating</label>
+        <select id="sortRating" class="form-select">
+          <option value="high-low">High to Low</option>
+          <option value="low-high">Low to High</option>
+        </select>
+      </div>
+
+      <!-- Sort by Availability -->
+      <div class="mb-3">
+        <label for="sortAvailability" class="form-label">Sort by Availability</label>
+        <select id="sortAvailability" class="form-select">
+          <option value="available">Available</option>
+          <option value="unavailable">Unavailable</option>
+        </select>
+      </div>
+
+      <!-- Sort by Date Added -->
+      <div class="mb-3">
+        <label for="sortDate" class="form-label">Sort by Date Added</label>
+        <select id="sortDate" class="form-select">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
+
+      <!-- Additional Search Filters -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Product Rental Search</h6>
+          <form>
+            <!-- Rental Duration -->
+            <div class="mb-3">
+              <label for="rentalDuration" class="form-label">Rental Duration (Days)</label>
+              <input type="number" id="rentalDuration" class="form-control" placeholder="Enter days">
             </div>
-            <!-- /Search -->
 
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-              <!-- Place this tag where you want the button to render. -->
-              <li class="nav-item lh-1 me-3">
-                <a
-                  class="github-button"
-                  href="https://github.com/themeselection/sneat-html-admin-template-free"
-                  data-icon="octicon-star"
-                  data-size="large"
-                  data-show-count="true"
-                  aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                  >Star</a
-                >
-              </li>
+            <!-- Price Range -->
+            <div class="mb-3">
+              <label for="priceRange" class="form-label">Price Range</label>
+              <input type="range" id="priceRange" class="form-range" min="0" max="1000">
+            </div>
 
-              <!-- User -->
-              <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                  <div class="avatar avatar-online">
-                    <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                  </div>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <div class="d-flex">
-                        <div class="flex-shrink-0 me-3">
-                          <div class="avatar avatar-online">
-                            <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                          </div>
-                        </div>
-                        <div class="flex-grow-1">
-                          <span class="fw-semibold d-block">John Doe</span>
-                          <small class="text-muted">Admin</small>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <i class="bx bx-user me-2"></i>
-                      <span class="align-middle">My Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <i class="bx bx-cog me-2"></i>
-                      <span class="align-middle">Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <span class="d-flex align-items-center align-middle">
-                        <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                        <span class="flex-grow-1 align-middle">Billing</span>
-                        <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="auth-login-basic.html">
-                      <i class="bx bx-power-off me-2"></i>
-                      <span class="align-middle">Log Out</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <!--/ User -->
-            </ul>
+            <!-- Category Filter -->
+            <div class="mb-3">
+              <label for="categoryFilter" class="form-label">Category</label>
+              <select id="categoryFilter" class="form-select">
+                <option value="all">All Categories</option>
+                <option value="furniture">Furniture</option>
+                <option value="appliances">Appliances</option>
+                <option value="electronics">Electronics</option>
+                <option value="vehicles">Vehicles</option>
+              </select>
+            </div>
+
+            <!-- Availability Toggle -->
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="availableOnly">
+              <label class="form-check-label" for="availableOnly">Available Only</label>
+            </div>
+
+            <!-- Apply Filters Button -->
+            <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Section 2: Product Listings -->
+    <div class="col-12 col-lg-9">
+      <div class="row">
+        <!-- Product Card 1 -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">Product Title 1</h5>
+              <p class="card-text">Short description of the product.</p>
+              <a href="#" class="btn btn-primary">View Details</a>
+            </div>
           </div>
-        </nav>
+        </div>
+        <!-- Product Card 2 -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">Product Title 2</h5>
+              <p class="card-text">Short description of the product.</p>
+              <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        <!-- Product Card 3 -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">Product Title 3</h5>
+              <p class="card-text">Short description of the product.</p>
+              <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        <!-- Additional Product Cards -->
+        <!-- Add more product cards as needed -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
           
          
 
-            <div class="content-backdrop fade"></div>
+            
           </div>
           <!-- Content wrapper -->
         </div>
@@ -314,12 +403,15 @@
 
     <div class="buy-now">
       <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
+        href="/addProduct"
+        
         class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
+        style="font-size: 1.0rem; padding: 0.75rem 1.5rem; border-radius: 25px;"
       >
+        Add Products <i class="bi bi-plus-circle ms-2" style="font-size: 1.2rem;"></i>
+      </a>
     </div>
+    
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -329,6 +421,13 @@
     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
     <script src="../assets/vendor/js/menu.js"></script>
+
+    <script>
+      function updateLocation(location) {
+  document.getElementById('selectedLocation').textContent = location;
+}
+
+    </script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
