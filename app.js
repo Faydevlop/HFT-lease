@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -32,6 +33,15 @@ app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(
+  session({
+    secret: 'carrot', // Use a simple string for now
+    resave: false,             // Prevent resaving session if not modified
+    saveUninitialized: true,   // Save session even if not modified
+    cookie: { maxAge: 1000 * 60 * 60 }, // Session lasts for 1 hour
+  })
+);
 
 app.use(logger('dev'));
 app.use(express.json({ limit: '10mb' }));
